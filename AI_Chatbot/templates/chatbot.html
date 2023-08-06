@@ -64,12 +64,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Chatbot</h1>
+        <h1>Chitt Chat</h1>
+        <p>Hello! This is an AI Chatbot which will help you to answers your question related to college inquires and also help you to calculate the math problems.</p>
         <div class="chat-container" id="chat-container">
             {% for chat in chats %}
                 <div class="chat-item {% if 'here' in chat.bot_response %}user-chat{% else %}bot-chat{% endif %}">
-                    {% comment %} <p>{{ chat.user_input }}</p> {% endcomment %}
-                    {% comment %} <div class="card-body p-4" style="height: 500px; overflow: auto"> {% endcomment %}
         
                         <div class="d-flex align-items-baseline text-end justify-content-end mb-4">
                             <div class="pe-1">
@@ -89,8 +88,6 @@
                                 </div>
                             </div>
                         </div>
-                    {% comment %} </div> {% endcomment %}
-                    {% comment %} <p>{% if 'here' in chat.bot_response %}{{ chat.bot_response|safe }}{% else %}{{ chat.bot_response }}{% endif %}</p> {% endcomment %}
                 </div>
             {% endfor %}
         </div>
