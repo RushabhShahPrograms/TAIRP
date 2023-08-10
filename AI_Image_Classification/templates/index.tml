@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classification</title>
+</head>
+<body>
+    <h1>Image Classification</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <input type="file" name="image">
+        <input type="submit" value="Predict">
+    </form>
+    <div>
+        {% if prediction %}
+            <p>Predicted class: {{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
