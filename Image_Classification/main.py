@@ -9,14 +9,14 @@ training_images,testing_images = training_images/255, testing_images/255
 
 class_names = ['Plane','Car','Bird','Cat','Deer','Dog','Frog','Horse','Ship','Truck']
 
-for i in range(16):
-    plt.subplot(4,4,i+1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.imshow(training_images[i],cmap=plt.cm.binary)
-    plt.xlabel(class_names[training_lables[i][0]])
+# for i in range(16):
+#     plt.subplot(4,4,i+1)
+#     plt.xticks([])
+#     plt.yticks([])
+#     plt.imshow(training_images[i],cmap=plt.cm.binary)
+#     plt.xlabel(class_names[training_lables[i][0]])
 
-plt.show()
+# plt.show()
 # training_images = training_images[:20000]
 # training_lables = training_lables[:20000]
 # testing_images = testing_images[:4000]
@@ -43,3 +43,12 @@ plt.show()
 # model.save('image_classifier.model')
 
 model = models.load_model('image_classifier.model')
+
+img = cv.imread('img/deer.jpg')
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+
+plt.imshow(img,cmap=plt.cm.binary)
+prediction = model.predict(np.array([img])/255)
+index = np.argmax(prediction)
+print(f"Prediction is {class_names[index]}")
+plt.show()
