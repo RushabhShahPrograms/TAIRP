@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handwritten Digit Recognition</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the container */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #beeef7; /* Placeholder background color */
+        }
+        
+        /* Add a light overlay to the background */
+        .background-overlay {
+            background-color: rgba(190, 238, 247, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a centered container using Bootstrap -->
+    <div class="container-fluid center-container background-overlay">
+        <div class="col-md-6">
+            <h1 class="text-center">Handwritten Digit Recognition</h1>
+            <form action="{% url 'digit_recognition' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload Image (PNG or JPG, 48x48 px):</label>
+                    <input type="file" class="form-control" name="image" accept="image/png, image/jpeg">
+                </div>
+                <div class="mb-3">
+                    <small class="form-text text-muted">
+                        Please upload a PNG or JPG image with dimensions 48x48 pixels. You can add one image at a time.
+                    </small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result - Handwritten Digit Recognition</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the container */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fab4af; /* Placeholder background color */
+        }
+        
+        /* Add a light overlay to the background */
+        .background-overlay {
+            background-color: rgba(250, 180, 175, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a centered container using Bootstrap -->
+    <div class="container-fluid center-container background-overlay">
+        <div class="col-md-6">
+            <h1 class="text-center">Recognition Results</h1>
+            <ul>
+                {% for result in results %}
+                <li class="mb-2">
+                    {% if result == "Error" %}
+                    <span class="text-danger">Image processing error</span>
+                    {% else %}
+                    Predicted digit: {{ result }}
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'index' %}" class="btn btn-primary">Back to Upload</a>
+        </div>
+    </div>
+</body>
+</html>
